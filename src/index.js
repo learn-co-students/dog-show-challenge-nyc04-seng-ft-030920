@@ -8,33 +8,36 @@ const dogForm = document.getElementById('dog-form')
 
 fetch(dogsURL)
     .then(r => r.json())
-    .then((dogs) => {
-        dogs.forEach((dog) => {
-            loadDog(dog)
-            // submitDogInfo(dog)
+    .then((dogsArray) => {
+        dogsArray.forEach((dog) => {
+            turnDogIntoTableRow(dog)
         })
-
     })
 
-function loadDog(dog) {
-    let newRow = document.createElement('tr')
-    dogsTable.append(newRow)
+function turnDogIntoTableRow(dog) {
+    formatDogRow(dog)
+    updateDog(dog)
+}
 
+function formatDogRow(dog) {
+    let newRow = document.createElement('tr')
     let newNameCell = document.createElement('td')
     newNameCell.innerText = `${dog.name}`
-    newRow.append(newNameCell)
 
     let newBreedCell = document.createElement('td')
     newBreedCell.innerText = `${dog.breed}`
-    newRow.append(newBreedCell)
-
+    
     let newSexCell = document.createElement('td')
     newSexCell.innerText = `${dog.sex}`
-    newRow.append(newSexCell)
-
+    
     let editButtonCell = document.createElement('button')
     editButtonCell.innerText = `Edit`
     editButtonCell.style.cursor = 'pointer'
+
+    dogsTable.append(newRow)
+    newRow.append(newNameCell)
+    newRow.append(newBreedCell)
+    newRow.append(newSexCell)
     newRow.append(editButtonCell)
 
     // click event listener
@@ -51,36 +54,32 @@ function loadDog(dog) {
 }
 
 // submit event listener
-function submitDogInfo() {
+function updateDog(dog) {
     dogForm.addEventListener("submit", (event) => {
-        event.preventDefault()
-    
-        let dogId = event.target.dataset.id
-        let dogName = event.target.name.value
-        let dogBreed = event.target.breed.value 
-        let dogSex = event.target.sex.value
+        submitListener(dog)
+    })
+}
 
-        // console.log(`http://localhost:3000/dogs/${dog.id}`)
-    
-        fetch(`http://localhost:3000/dogs/${dog.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({
-                id: dogId,
-                name: dogName,
-                breed: dogBreed,
-                sex: dogSex,
-            })
-            
-            .then(r => r.json())
-            .then((updatedDog) => {
-                updatedDog.name = dogName
-                updatedDog.breed = dogBreed
-                updatedDog.sex = dogSex
-            })
+function submitListener(dog) {
+    event.preventDefault()
+
+    let newDogName = event.target.name.value
+    let newDogBreed = event.target.breed.value 
+    let newDogSex = event.target.sex.value
+
+    fetch(`http://localhost:3000/dogs/${dog.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            name: newDogName,
+            breed: newDogBreed,
+            sex: newDogSex,
         })
     })
+        .then(r => r.json())
+        .then((updatedDog) => {
+            console.log(updatedDog)
+        })
 }
