@@ -2,123 +2,123 @@
   "dogs": [
     {
       "id": 1,
-      "name": "Frankie",
+      "name": "Loaf",
       "breed": "Corgi",
-      "sex": "male"
+      "sex": "Male"
     },
     {
       "id": 2,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Finkie",
+      "breed": "Golden Doodle",
+      "sex": "Male"
     },
     {
       "id": 3,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Snickers",
+      "breed": "Dachshund",
+      "sex": "female"
     },
     {
       "id": 4,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Harvey",
+      "breed": "Irish Spaniel",
       "sex": "male"
     },
     {
       "id": 5,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Gracie",
+      "breed": "Miniature Pinscher",
+      "sex": "female"
     },
     {
       "id": 6,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Oreo",
+      "breed": "English Springer",
       "sex": "male"
     },
     {
       "id": 7,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Diamond",
+      "breed": "Labrador",
+      "sex": "female"
     },
     {
       "id": 8,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Chloe",
+      "breed": "Dandie Terrier",
       "sex": "male"
     },
     {
       "id": 9,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Shelby",
+      "breed": "Kuvasz",
       "sex": "male"
     },
     {
       "id": 10,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Patches",
+      "breed": "Dingo",
       "sex": "male"
     },
     {
       "id": 11,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Jasper",
+      "breed": "Redbone",
+      "sex": "female"
     },
     {
       "id": 12,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Misty",
+      "breed": "Patterdale Terrier",
+      "sex": "female"
     },
     {
       "id": 13,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Lady",
+      "breed": "Mexicanhairless",
+      "sex": "female"
     },
     {
       "id": 14,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Coco",
+      "breed": "Maltese",
+      "sex": "female"
     },
     {
       "id": 15,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Pepper",
+      "breed": "Westhighland Terrier",
+      "sex": "female"
     },
     {
       "id": 16,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Buddy",
+      "breed": "Walker Hound",
+      "sex": "female"
     },
     {
       "id": 17,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Chance",
+      "breed": "Flatcoated Retriever",
+      "sex": "female"
     },
     {
       "id": 18,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Chance",
+      "breed": "Toy Terrier",
       "sex": "male"
     },
     {
       "id": 19,
-      "name": "Frankie",
-      "breed": "Corgi",
+      "name": "Penny",
+      "breed": "Wheaten Terrier",
       "sex": "male"
     },
     {
       "id": 20,
-      "name": "Frankie",
-      "breed": "Corgi",
-      "sex": "male"
+      "name": "Coco",
+      "breed": "Affenpinscher",
+      "sex": "female"
     }
   ]
 }

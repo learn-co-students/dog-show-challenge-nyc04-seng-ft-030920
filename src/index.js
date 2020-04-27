@@ -10,76 +10,71 @@ fetch(dogsURL)
     .then(r => r.json())
     .then((dogsArray) => {
         dogsArray.forEach((dog) => {
-            turnDogIntoTableRow(dog)
+            turnDogIntoRow(dog)
         })
     })
 
-function turnDogIntoTableRow(dog) {
-    formatDogRow(dog)
-    updateDog(dog)
-}
+function turnDogIntoRow(dog) {
+    let dogRow = document.createElement('tr')
+    dogRow.classList.add('dog-row')
 
-function formatDogRow(dog) {
-    let newRow = document.createElement('tr')
-    let newNameCell = document.createElement('td')
-    newNameCell.innerText = `${dog.name}`
+    let dogRowName = document.createElement('td')
+    dogRowName.id = 'dog-name'
+    dogRowName.innerText = dog.name
 
-    let newBreedCell = document.createElement('td')
-    newBreedCell.innerText = `${dog.breed}`
-    
-    let newSexCell = document.createElement('td')
-    newSexCell.innerText = `${dog.sex}`
-    
-    let editButtonCell = document.createElement('button')
-    editButtonCell.innerText = `Edit`
-    editButtonCell.style.cursor = 'pointer'
+    let dogRowBreed = document.createElement('td')
+    dogRowBreed.id = 'dog-breed'
+    dogRowBreed.innerText = dog.breed
 
-    dogsTable.append(newRow)
-    newRow.append(newNameCell)
-    newRow.append(newBreedCell)
-    newRow.append(newSexCell)
-    newRow.append(editButtonCell)
+    let dogRowSex = document.createElement('td')
+    dogRowSex.id = 'dog-sex'
+    dogRowSex.innerText = dog.sex
 
-    // click event listener
-    editButtonCell.addEventListener("click", () => {
-        const nameInput = dogForm.querySelector(`input[name = 'name']`)
-        const breedInput = dogForm.querySelector(`input[name = 'breed']`)
-        const sexInput = dogForm.querySelector(`input[name = 'sex']`)
+    let editButton = document.createElement('button')
+    editButton.style.cursor = 'pointer'
+    editButton.innerText = "Edit"    
 
-        dogForm.dataset.id = dog.id
-        nameInput.value = dog.name
-        breedInput.value = dog.breed
-        sexInput.value = dog.sex
+    dogsTable.append(dogRow)
+    dogRow.append(dogRowName, dogRowBreed, dogRowSex, editButton)
+
+    editButton.addEventListener("click", (event) => {
+        populateInputFields(dog)
     })
 }
 
-// submit event listener
-function updateDog(dog) {
+function populateInputFields(dog) {
+    const dogRow = dogsTable.querySelector('.dog-row')
+    const dogRowName = dogRow.querySelector('#dog-name')
+    const dogRowBreed = dogRow.querySelector('#dog-breed')
+    const dogRowSex = dogRow.querySelector('#dog-sex')
+    
+    const inputDogName = dogForm.name
+    const inputDogBreed = dogForm.breed
+    const inputDogSex = dogForm.sex
+
+    inputDogName.value = dog.name
+    inputDogBreed.value = dog.breed
+    inputDogSex.value = dog.sex
+
     dogForm.addEventListener("submit", (event) => {
-        submitListener(dog)
-    })
-}
-
-function submitListener(dog) {
-    event.preventDefault()
-
-    let newDogName = event.target.name.value
-    let newDogBreed = event.target.breed.value 
-    let newDogSex = event.target.sex.value
-
-    fetch(`http://localhost:3000/dogs/${dog.id}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            name: newDogName,
-            breed: newDogBreed,
-            sex: newDogSex,
+        event.preventDefault(),
+        fetch(`http://localhost:3000/dogs/${dog.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: JSON.stringify({
+                name: inputDogName.value,
+                breed: inputDogBreed.value,
+                sex: inputDogSex.value,
+            }),
         })
+            .then(r => r.json())
+            .then((dog) => {
+                dogRowName.innerText = dog.name
+                dogRowBreed.innerText = dog.breed
+                dogRowSex.innerText = dog.sex
+                dogForm.reset()
+            })
     })
-        .then(r => r.json())
-        .then((updatedDog) => {
-            console.log(updatedDog)
-        })
 }
